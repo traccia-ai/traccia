@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "traccia"
+version = "0.1.0"
+description = "Production-ready tracing SDK for AI agents"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "tiktoken>=0.7.0",
+    "opentelemetry-api>=1.20.0",
+    "opentelemetry-sdk>=1.20.0",
+    "opentelemetry-exporter-otlp-proto-http>=1.20.0",
+    "opentelemetry-semantic-conventions>=0.40b0",
+    "tomli>=2.0.0; python_version < '3.11'",
+    "toml>=0.10.0",
+    "pydantic>=2.0.0",
+]
+
+[tool.setuptools]
+# Package files are in the current directory, map "traccia" package to "."
+package-dir = {"traccia" = "."}
+packages = ["traccia"]
+
+[project.scripts]
+traccia = "traccia.cli:main"
