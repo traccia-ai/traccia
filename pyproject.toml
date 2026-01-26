@@ -54,7 +54,9 @@ Issues = "https://github.com/traccia-ai/traccia/issues"
 [tool.setuptools]
 # Package files are in the current directory, map "traccia" package to "."
 package-dir = {"traccia" = "."}
-packages = ["traccia"]
+
+[tool.setuptools.packages.find]
+include = ["traccia*"]
 
 [project.scripts]
 traccia = "traccia.cli:main"
