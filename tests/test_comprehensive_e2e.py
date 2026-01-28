@@ -40,6 +40,29 @@ class TestInstrumentation:
         result = process("hello")
         assert result == "HELLO"
     
+    def test_observe_decorator_with_tags(self):
+        """Test @observe decorator with custom tags."""
+        from traccia.context import get_current_span
+
+        captured_tags = {}
+
+        @observe(
+            name="tagged_function",
+            tags=["ingest", "critical"],
+        )
+        def tagged():
+            span = get_current_span()
+            assert span is not None
+            # Access attributes to force sync from underlying OTel span
+            attrs = span.attributes
+            captured_tags["value"] = attrs.get("span.tags")
+            return "ok"
+
+        result = tagged()
+        assert result == "ok"
+        # OpenTelemetry may normalize list attributes to tuples internally
+        assert list(captured_tags["value"]) == ["ingest", "critical"]
+    
     def test_observe_decorator_skip_args(self):
         """Test @observe decorator with argument skipping."""
         @observe(name="login", skip_args=["password"])
@@ -249,16 +272,7 @@ class TestVersionAndBackwardCompat:
         # Should follow semver pattern
         parts = traccia.__version__.split('.')
         assert len(parts) >= 2  # At least major.minor
-    
-    def test_old_package_import_error(self):
-        """Test importing old package name raises helpful error."""
-        with pytest.raises(ImportError) as exc_info:
-            import traccia_sdk
-        
-        # Should mention the rename
-        assert "traccia_sdk" in str(exc_info.value).lower()
-        assert "traccia" in str(exc_info.value).lower()
-        assert "renamed" in str(exc_info.value).lower()
+
 
 
 if __name__ == "__main__":

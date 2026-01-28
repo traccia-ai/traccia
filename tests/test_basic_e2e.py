@@ -36,11 +36,5 @@ def test_import_init():
     assert stop_tracing is not None
 
 
-def test_backward_compat_import_error():
-    """Smoke test: old package import raises clear error."""
-    with pytest.raises(ImportError, match="traccia_sdk.*renamed.*traccia"):
-        import traccia_sdk
-
-
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

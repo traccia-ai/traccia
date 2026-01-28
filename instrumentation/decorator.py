@@ -128,6 +128,7 @@ def observe(
     name: Optional[str] = None,
     *,
     attributes: Optional[Dict[str, Any]] = None,
+    tags: Optional[Iterable[str]] = None,
     as_type: str = "span",
     skip_args: Optional[Iterable[str]] = None,
     skip_result: bool = False,
@@ -144,6 +145,7 @@ def observe(
         span_name = name or func.__name__
         arg_names = func.__code__.co_varnames
         skip_args_set = set(skip_args or [])
+        tags_list = [str(tag) for tag in tags] if tags is not None else []
 
         is_coro = inspect.iscoroutinefunction(func)
 
@@ -154,6 +156,8 @@ def observe(
             bound.apply_defaults()
 
             span_attrs = dict(attributes or {})
+            if tags_list:
+                span_attrs["span.tags"] = tags_list
             
             # Capture function arguments first
             span_attrs.update(_capture_args(bound, skip_args_set))
@@ -203,6 +207,8 @@ def observe(
             bound.apply_defaults()
 
             span_attrs = dict(attributes or {})
+            if tags_list:
+                span_attrs["span.tags"] = tags_list
             
             # Capture function arguments first
             span_attrs.update(_capture_args(bound, skip_args_set))

@@ -434,18 +434,6 @@ init(debug=True)
 - Increase `max_queue_size` if spans are queued
 - Check `traccia doctor` output
 
-#### **Import errors after upgrade**
-
-If you're migrating from `traccia_sdk`:
-
-```python
-# OLD (will raise helpful error)
-from traccia_sdk import init  # ❌ ImportError with migration guide
-
-# NEW
-from traccia import init  # ✅ Correct
-```
-
 ---
 
 ## 📚 API Reference
@@ -501,13 +489,14 @@ Create a span context manager.
 
 ### Decorator
 
-#### `@observe(name=None, *, attributes=None, as_type="span", skip_args=None, skip_result=False)`
+#### `@observe(name=None, *, attributes=None, tags=None, as_type="span", skip_args=None, skip_result=False)`
 
 Decorate a function to create spans automatically.
 
 **Parameters**:
 - `name` (str, optional): Span name (default: function name)
 - `attributes` (dict, optional): Initial attributes
+- `tags` (list[str], optional): User-defined identifiers for the observed method
 - `as_type` (str): Span type (`"span"`, `"llm"`, `"tool"`)
 - `skip_args` (list, optional): Arguments to skip capturing
 - `skip_result` (bool): Skip capturing return value
