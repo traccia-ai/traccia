@@ -90,7 +90,7 @@ api_key = ""
 # Endpoint URL for trace ingestion
 # For local Tempo: endpoint = "http://localhost:4318/v1/traces"
 # For local Jaeger: endpoint = "http://localhost:4318/v1/traces"
-endpoint = "https://rtdqiachrygdgs6e7ahtl7ulci0bjdbu.lambda-url.ap-south-1.on.aws/v2/traces"
+endpoint = "http://localhost:4318/v1/traces"
 
 # Sampling rate (0.0 to 1.0) - controls what percentage of traces are sent
 sample_rate = 1.0
