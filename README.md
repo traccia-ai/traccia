@@ -4,7 +4,7 @@
 
 Traccia is a lightweight, high-performance Python SDK for observability and tracing of AI agents, LLM applications, and complex distributed systems. Built on OpenTelemetry standards with specialized instrumentation for AI workloads.
 
-Traccia is now available in pypi.
+[Traccia](https://pypi.org/project/traccia/) is available on PyPI.
 
 ## ✨ Features
 
