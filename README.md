@@ -658,9 +658,9 @@ Contributions are welcome! Whether it's bug fixes, new features, documentation i
 ### Development Setup
 
 ```bash
-# Clone the repository
-git clone https://github.com/traccia-ai/traccia.git
-cd traccia
+# Clone the repository (Python SDK)
+git clone https://github.com/traccia-ai/traccia-py.git
+cd traccia-py
 
 # Create virtual environment
 python -m venv venv
@@ -714,8 +714,8 @@ Inspired by observability tools in the ecosystem and designed to work seamlessly
 
 ## 📞 Support & Community
 
-- **Issues**: [GitHub Issues](https://github.com/traccia-ai/traccia/issues) - Report bugs or request features
-- **Discussions**: [GitHub Discussions](https://github.com/traccia-ai/traccia/discussions) - Ask questions, share ideas
+- **Issues**: [GitHub Issues](https://github.com/traccia-ai/traccia-py/issues) - Report bugs or request features
+- **Discussions**: [GitHub Discussions](https://github.com/traccia-ai/traccia-py/discussions) - Ask questions, share ideas
 
 ---
 

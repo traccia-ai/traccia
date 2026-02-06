@@ -50,11 +50,11 @@ langchain = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/traccia-ai/traccia"
-Documentation = "https://github.com/traccia-ai/traccia#readme"
-Repository = "https://github.com/traccia-ai/traccia"
-Issues = "https://github.com/traccia-ai/traccia/issues"
-"Bug Tracker" = "https://github.com/traccia-ai/traccia/issues"
+Homepage = "https://github.com/traccia-ai/traccia-py"
+Documentation = "https://github.com/traccia-ai/traccia-py#readme"
+Repository = "https://github.com/traccia-ai/traccia-py"
+Issues = "https://github.com/traccia-ai/traccia-py/issues"
+"Bug Tracker" = "https://github.com/traccia-ai/traccia-py/issues"
 
 [tool.setuptools]
 # Package files are in the current directory, map "traccia" package to "."
